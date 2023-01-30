@@ -1,0 +1,26 @@
+#! for run this file you want the "REST Client" extension 
+GET http://localhost:9990/api/v1/
+# this route for get all user todo's
+
+###
+GET http://localhost:9990/api/v1/1
+# this route for get one todo
+
+###
+POST http://localhost:9990/api/v1
+# this route for create one todo
+Content-Type: application/json
+
+{
+    "bodyKey1": "bodyVal1",
+    "bodyKey2": "bodyVal2"
+}
+
+###
+DELETE http://localhost:9990/api/v1/1
+# this route for delete one todo
+
+
+###
+PATCH http://localhost:9990/api/v1/1
+# this route for update one todo
