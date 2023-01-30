@@ -3,7 +3,6 @@ const router = require("express").Router();
 
 // test route function
 const testFunc = (req, res) => {
-  // console.log(req.body);
   const resultObj = {};
   if (req.method === "POST") {
     resultObj.message = `the route ${req.path} on method ${req.method} is worked`;
