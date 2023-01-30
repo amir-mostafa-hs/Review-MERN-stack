@@ -8,10 +8,14 @@ const app = express();
 // get .env file property
 const { PORT } = process.env;
 
+// get todo routes
+const todoRoutes = require("./routers/todo.routes");
+
 // base routes
 app.get("/", (req, res) => {
-  res.json({ message: "welcome to the website" });
+  res.json({ message: "welcome to the server app" });
 });
+app.use("/api/v2", todoRoutes);
 
 // app listener request
 app.listen(PORT, () => console.log(`The server run on port: ${PORT}.\nYou can see the result on http://localhost:${PORT}/`));
