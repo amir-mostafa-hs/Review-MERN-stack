@@ -1,0 +1,12 @@
+{
+  "name": "server-of-MERN-app",
+  "version": "1.0.0",
+  "description": "the server folder of review MERN app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "amir-mostafa-hs",
+  "license": "MIT"
+}
