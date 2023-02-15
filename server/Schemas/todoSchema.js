@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
+// create User schema for assignedToUsers and constructiveUsers in ToDoSchema
 const User = new Schema({
   name: { type: String, require: true },
   userId: { type: String, require: true },
   userRole: { type: String, require: true },
 });
 
+// create ToDoSchema for model of todo data in database
 const ToDoSchema = new Schema(
   {
     title: {
@@ -40,4 +41,5 @@ const ToDoSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("ToDoModel", ToDoSchema);
+// export all schema
+module.exports = mongoose.model("ToDoSchema", ToDoSchema);
