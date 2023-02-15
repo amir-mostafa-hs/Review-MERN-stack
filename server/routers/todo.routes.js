@@ -1,6 +1,6 @@
 // call express router for create app routes
 const router = require("express").Router();
-const { createNewTodo } = require("../controllers/todoController");
+const { createNewTodo, getAllUserTodo } = require("../controllers/todoController");
 
 // test route function
 const testFunc = (req, res) => {
@@ -20,7 +20,7 @@ const testFunc = (req, res) => {
  * route: /api/v2/
  * description: get all user todo
  */
-router.get("/", testFunc);
+router.get("/", getAllUserTodo);
 
 /**
  * method: GET
