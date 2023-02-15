@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const ToDoSchema = require("../Schemas/todoSchema");
 
 // get all user todo
@@ -20,15 +21,19 @@ const getAllUserTodo = async (req, res) => {
 const getOneUserTodo = async (req, res) => {
   const { id } = req.params;
 
-  try {
-    const todoData = await ToDoSchema.findById(id);
-    if (!todoData) {
-      res.status(404).json({ error: "There is no such todo with this id" });
-    } else {
-      res.status(200).json(todoData);
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    res.status(404).json({ error: "This id is not valid" });
+  } else {
+    try {
+      const todoData = await ToDoSchema.findById(id);
+      if (!todoData) {
+        res.status(404).json({ error: "There is no such todo with this id" });
+      } else {
+        res.status(200).json(todoData);
+      }
+    } catch (error) {
+      res.status(400).json({ error: error.message });
     }
-  } catch (error) {
-    res.status(400).json({ error: error.message });
   }
 };
 
