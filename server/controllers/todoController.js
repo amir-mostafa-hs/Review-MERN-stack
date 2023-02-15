@@ -40,10 +40,9 @@ const getOneUserTodo = async (req, res) => {
 // create new user todo
 const createNewTodo = async (req, res) => {
   const { title, description, constructiveUsers, assignedToUsers, createDate, doneDate } = req.body;
-  const newTodoData = { title, description, constructiveUsers, assignedToUsers, createDate, doneDate };
 
   try {
-    const todo = await ToDoSchema.create(newTodoData);
+    const todo = await ToDoSchema.create({ title, description, constructiveUsers, assignedToUsers, createDate, doneDate });
     res.status(200).json(todo);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -71,10 +70,29 @@ const deleteOneUserTodo = async (req, res) => {
 };
 
 // update on user todo
+const updateOneUserTodo = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    res.status(400).json({ error: "This id is not valid" });
+  } else {
+    try {
+      const updatedTodoData = await ToDoSchema.findByIdAndUpdate(id, { ...req.body });
+      if (!updatedTodoData) {
+        res.status(404).json({ error: "There is no such todo with this id" });
+      } else {
+        res.status(200).json(updatedTodoData);
+      }
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+};
 
 module.exports = {
   createNewTodo,
   getAllUserTodo,
   getOneUserTodo,
   deleteOneUserTodo,
+  updateOneUserTodo,
 };

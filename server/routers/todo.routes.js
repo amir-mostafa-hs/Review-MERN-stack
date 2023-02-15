@@ -1,6 +1,6 @@
 // call express router for create app routes
 const router = require("express").Router();
-const { createNewTodo, getAllUserTodo, getOneUserTodo, deleteOneUserTodo } = require("../controllers/todoController");
+const { createNewTodo, getAllUserTodo, getOneUserTodo, deleteOneUserTodo, updateOneUserTodo } = require("../controllers/todoController");
 
 // test route function
 const testFunc = (req, res) => {
@@ -52,7 +52,7 @@ router.delete("/:id", deleteOneUserTodo);
  * route: /api/v2/:id
  * description: update one user todo
  */
-router.patch("/:id", testFunc);
+router.patch("/:id", updateOneUserTodo);
 
 // export all todo routes
 module.exports = router;
