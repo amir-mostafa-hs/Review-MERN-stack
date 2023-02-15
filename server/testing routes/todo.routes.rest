@@ -42,5 +42,12 @@ DELETE http://localhost:9990/api/v1/63ecfc970b5b86e80d78489b
 
 
 ###
-PATCH http://localhost:9990/api/v1/1
+PATCH http://localhost:9990/api/v1/63ecfcb70b5b86e80d78489f
 # this route for update one todo
+Content-Type: application/json
+
+# this is a request body for test update todo
+{
+    "title" : "homework",
+    "description" : "javascript homework"
+}
