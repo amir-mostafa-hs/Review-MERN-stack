@@ -8,13 +8,27 @@ GET http://localhost:9990/api/v1/1
 
 ###
 POST http://localhost:9990/api/v1
-# this route for create one todo
+# this route for create new todo
 Content-Type: application/json
 
+# this is a request body for test create new todo
 {
-    "bodyKey1": "bodyVal1",
-    "bodyKey2": "bodyVal2"
+    "title" : "homework",
+    "description" : "javascript homework", 
+    "constructiveUsers" : {
+        "name" : "Dayan",
+        "userId" : "u45s11",
+        "userRole" : "mentor"
+    }, 
+    "assignedToUsers" :  {
+        "name" : "Diana",
+        "userId" : "u45s55",
+        "userRole" : "student"
+    }, 
+    "createDate" : "2023-1-1", 
+    "doneDate" : "2023-1-5"
 }
+
 
 ###
 DELETE http://localhost:9990/api/v1/1
