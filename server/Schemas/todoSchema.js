@@ -42,4 +42,4 @@ const ToDoSchema = new Schema(
 );
 
 // export all schema
-module.exports = mongoose.model("ToDoSchema", ToDoSchema);
+module.exports = mongoose.model("ToDo", ToDoSchema);
