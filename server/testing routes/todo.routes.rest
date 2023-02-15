@@ -1,6 +1,12 @@
 #! for run this file you want the "REST Client" extension 
 GET http://localhost:9990/api/v1/
 # this route for get all user todo's
+Content-Type: application/json
+
+# this is a request body for test get all user todo's
+{
+    "userId" : "u45s55"
+}
 
 ###
 GET http://localhost:9990/api/v1/1
