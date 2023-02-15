@@ -37,7 +37,7 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:9990/api/v1/1
+DELETE http://localhost:9990/api/v1/63ecfc970b5b86e80d78489b
 # this route for delete one todo
 
 
