@@ -22,7 +22,7 @@ const getOneUserTodo = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    res.status(404).json({ error: "This id is not valid" });
+    res.status(400).json({ error: "This id is not valid" });
   } else {
     try {
       const todoData = await ToDoSchema.findById(id);
@@ -51,6 +51,24 @@ const createNewTodo = async (req, res) => {
 };
 
 // delete one user todo
+const deleteOneUserTodo = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    res.status(400).json({ error: "This id is not valid" });
+  } else {
+    try {
+      const deletedTodoData = await ToDoSchema.findByIdAndDelete(id);
+      if (!deletedTodoData) {
+        res.status(404).json({ error: "There is no such todo with this id" });
+      } else {
+        res.status(200).json(deletedTodoData);
+      }
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+};
 
 // update on user todo
 
@@ -58,4 +76,5 @@ module.exports = {
   createNewTodo,
   getAllUserTodo,
   getOneUserTodo,
+  deleteOneUserTodo,
 };

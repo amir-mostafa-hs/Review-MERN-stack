@@ -1,6 +1,6 @@
 // call express router for create app routes
 const router = require("express").Router();
-const { createNewTodo, getAllUserTodo, getOneUserTodo } = require("../controllers/todoController");
+const { createNewTodo, getAllUserTodo, getOneUserTodo, deleteOneUserTodo } = require("../controllers/todoController");
 
 // test route function
 const testFunc = (req, res) => {
@@ -44,7 +44,7 @@ router.post("/", createNewTodo);
  * route: /api/v2/:id
  * description: delete one user todo
  */
-router.delete("/:id", testFunc);
+router.delete("/:id", deleteOneUserTodo);
 
 /**
  * method: PATCH
