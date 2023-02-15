@@ -5,7 +5,7 @@ const getAllUserTodo = async (req, res) => {
   const { userId } = req.body;
 
   try {
-    const allTodoData = await ToDoSchema.find({ "assignedToUsers.userId": userId });
+    const allTodoData = await ToDoSchema.find({ "assignedToUsers.userId": userId }).sort({ createAt: -1 });
     res.status(200).json(allTodoData);
   } catch (error) {
     res.status(400).json({ error: error.message });
