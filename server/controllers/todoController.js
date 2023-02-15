@@ -6,13 +6,31 @@ const getAllUserTodo = async (req, res) => {
 
   try {
     const allTodoData = await ToDoSchema.find({ "assignedToUsers.userId": userId }).sort({ createAt: -1 });
-    res.status(200).json(allTodoData);
+    if (!allTodoData) {
+      res.status(404).json({ error: "There is no such user with this userId" });
+    } else {
+      res.status(200).json(allTodoData);
+    }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
 // get one user todo
+const getOneUserTodo = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const todoData = await ToDoSchema.findById(id);
+    if (!todoData) {
+      res.status(404).json({ error: "There is no such todo with this id" });
+    } else {
+      res.status(200).json(todoData);
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 // create new user todo
 const createNewTodo = async (req, res) => {
@@ -34,4 +52,5 @@ const createNewTodo = async (req, res) => {
 module.exports = {
   createNewTodo,
   getAllUserTodo,
+  getOneUserTodo,
 };
